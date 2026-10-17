@@ -24,8 +24,12 @@ function filterActiveUsers(users) {
  * @param {string} action - The action performed.
  * @param {string} username - The name of the user.
  * @returns {string} - The log message.
+ * @throws {Error} - If action or username is missing or empty.
  */
 function logAction(action, username) {
+    if (!action || !username) {
+        throw new Error('Both action and username are required');
+    }
     const timestamp = new Date().toISOString();
     return `User ${username} performed ${action} at ${timestamp}`;
 }
